@@ -42,10 +42,10 @@ function LoopingTypedText({
 }) {
   const [displayed, setDisplayed] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  
+
   useEffect(() => {
     let timeoutId: ReturnType<typeof setTimeout>;
-    
+
     if (!isDeleting && displayed === text) {
       timeoutId = setTimeout(() => setIsDeleting(true), pauseDelay);
     } else if (isDeleting && displayed === "") {
@@ -59,7 +59,7 @@ function LoopingTypedText({
         });
       }, nextDelay);
     }
-    
+
     return () => clearTimeout(timeoutId);
   }, [displayed, isDeleting, text, speed, pauseDelay, startDelay]);
 
@@ -120,11 +120,11 @@ function PetFoodsPage() {
         />
         <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 bg-gradient-to-b from-deep-navy/60 via-deep-navy/30 to-background" />
-        
+
         <FrostParticles count={25} />
-        
+
         <div className="relative z-10 mx-auto max-w-7xl px-6 text-center">
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -132,14 +132,14 @@ function PetFoodsPage() {
           >
             Premium Pet Nutrition
           </motion.p>
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.15 }}
             className="text-display text-5xl text-frost-white sm:text-6xl md:text-7xl"
           >
             For your <br />
-            <LoopingTypedText 
+            <LoopingTypedText
               text="best friend."
               className="text-gradient-ice italic font-medium"
               startDelay={600}
@@ -147,7 +147,7 @@ function PetFoodsPage() {
               pauseDelay={2500}
             />
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.35 }}
